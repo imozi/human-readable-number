@@ -40,8 +40,6 @@ module.exports = function toReadable(number) {
         const firstNum = number.toString().slice(0, 1);
         const secondNum = number.toString().slice(1);
 
-        console.log(secondNum);
-
         if (secondNum === "00") {
             return `${NUMBERS[firstNum]} hundred`;
         }
@@ -50,14 +48,14 @@ module.exports = function toReadable(number) {
             return `${NUMBERS[firstNum]} hundred ${
                 NUMBERS[secondNum.slice(1)]
             }`;
-        } else {
-            const arr = numToArr(secondNum);
-            return `${NUMBERS[firstNum]} hundred ${
-                NUMBERS[secondNum]
-                    ? NUMBERS[secondNum]
-                    : `${NUMBERS[arr[0]]} ${NUMBERS[arr[1]]}`
-            }`;
         }
+
+        const arr = numToArr(secondNum);
+        return `${NUMBERS[firstNum]} hundred ${
+            NUMBERS[secondNum]
+                ? NUMBERS[secondNum]
+                : `${NUMBERS[arr[0]]} ${NUMBERS[arr[1]]}`
+        }`;
     }
 
     if (number > 20) {
